@@ -1,0 +1,31 @@
+{
+  "name": "optional-peer-dependencies",
+  "version": "0.0.0",
+  "private": "true",
+  "license": "MIT",
+  "author": {
+    "name": "André Costa",
+    "email": "andrefonsecacosta@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/decs/optional-peer-dependencies.git"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "test": "turbo test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsup": "^8.0.2",
+    "turbo": "^1.12.4",
+    "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "svgo": "2.8.0"
+      }
+    }
+  }
+}
