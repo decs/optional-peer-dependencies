@@ -17,13 +17,16 @@ import {
 
 const REGEX = createRegExp(
   maybe(oneOrMore(whitespace)).groupedAs("indentation"),
-  anyOf("const", "let", "var").groupedAs("declarationType"),
+  maybe(
+    anyOf("const", "let", "var"),
+    oneOrMore(whitespace),
+    oneOrMore(wordChar).or("{", oneOrMore(char), "}"),
+    oneOrMore(whitespace),
+    "=",
+    oneOrMore(whitespace)
+  ).groupedAs("variableDeclaration"),
+  "await",
   oneOrMore(whitespace),
-  oneOrMore(wordChar).or("{", oneOrMore(char), "}").groupedAs("variableName"),
-  oneOrMore(whitespace),
-  "=",
-  oneOrMore(whitespace),
-  maybe("await", oneOrMore(whitespace)).groupedAs("await"),
   "import(",
   maybe(oneOrMore(whitespace)),
   exactly("'", oneOrMore(char), "'")
@@ -36,14 +39,14 @@ const REGEX = createRegExp(
 );
 const TEMPLATE = `
 try {
-  var dynamicallyImportedModule = $<await>import(
+  var dynamicallyImportedModule = await import(
     /* webpackIgnore: true */
     $<modulePath>
   )$<terminator>
 } catch (moduleImportError) {
   throw moduleImportError$<terminator>
 }
-$<declarationType> $<variableName> = dynamicallyImportedModule$<terminator>
+$<variableDeclaration> dynamicallyImportedModule$<terminator>
 `;
 
 export const optionalPeerDependencies: Plugin = {

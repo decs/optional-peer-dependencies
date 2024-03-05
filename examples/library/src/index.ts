@@ -1,6 +1,11 @@
 export async function testCases() {
   try {
     // @ts-expect-error
+    await import("external-module");
+  } catch (error) {}
+
+  try {
+    // @ts-expect-error
     const module = await import("external-module");
   } catch (error) {}
   try {
