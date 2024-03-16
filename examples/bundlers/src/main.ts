@@ -1,8 +1,8 @@
-import { testCases } from "example-library";
+import {testCases} from 'example-library';
 
 async function main() {
   await testCases();
-  console.log("success");
+  console.log('success');
   return null;
 }
 

@@ -24,7 +24,8 @@
     "build": "tsup"
   },
   "devDependencies": {
-    "esbuild-plugin-optional-peer-dependencies": "workspace:*"
+    "esbuild-plugin-optional-peer-dependencies": "workspace:*",
+    "optional-peer-dependencies": "workspace:*"
   },
   "peerDependencies": {
     "external-module": "^0.0.0"
