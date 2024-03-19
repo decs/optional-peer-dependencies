@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type {Metadata} from 'next';
 
 export const metadata: Metadata = {
-  title: "Optional peer dependencies",
+  title: 'Optional peer dependencies',
 };
 
 export default function RootLayout({
